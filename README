@@ -1,0 +1,43 @@
+This is the first public release.
+ common contains some common routines that will be used by all
+ stack layers. There is also a test driver in here.
+
+ mtp3 - is the start of the mtp3 stack. At this point all there is
+ is the start to a decoder/encode.
+
+I'm working on Linux RH7.0 and everything compiles OK.
+
+To try it fire up 2 mtp3 processes using differnet ports
+
+eg
+This command starts the process with local port/IP
+3000/192.168.2.1 and remote port/IP 3001/192.168.2.1
+The -t creates a mesg queue to which the test driver sends
+commands
+
+./mtp3 -p3000 -a192.168.2.1 -P3001 -A192.168.2.1 -t 4000
+
+In another x-window
+
+./mtp3 -p3001 -a192.168.2.1 -P3000 -A192.168.2.1 -t 5000
+
+Then in 2 other x-windows start up a couple of test drivers
+
+./driver -t 4000
+
+./driver -t 5000
+
+Froma adriver tyep 
+1
+
+This presently gets the test driver to tell the stack to send
+a TUP message. The stack will send the message to its peer where
+it should be decoded and displayed.
+
+Over the next week I'll continue on the mtp3 decoder/encoder and
+improve on thi dismal documentation.
+
+
+
+
+ 

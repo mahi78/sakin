@@ -1,0 +1,45 @@
+<pre>
+openss7
+
+Objective
+---------
+The objective of this projetc is to produce an open implementation of the ss7 core protocols consisting of Message Transfer Part Level 3 (MTP3), ISDN User Part (ISUP), Signaling Connection Control Part (SCCP), and Transaction Capabilities Part (TCAP). In addition the ietf sigtran working group has defined a set of adaptation layers to enabled the transport of ss7 data over IP. The project should produce an implementation of these layers as well.
+
+OSs
+---
+I develop mainly on linux, and have an HP, so initially these will be the
+main OSs I'd like to target. I'm not partial to anything specific, at this point if you're willing to contribute any OS will do. Longer term I'd certainly like to cover off the main 'nix variants and NT, but in addition I think its important to support some popular real-time OSs on the market.
+
+Quality & scalability
+---------------------
+One of the key challenges to producing an ss7 stack that is usable for more than just learning and playing is high quality and scalability. Its these two factors that will determine if that implementations actually get used in real-world applications.
+
+ANSI versus ITU-T
+-----------------
+The American National Standards Institute has produced ss7 specifications that, together with specifications from Telcordia, specify the operation in North American networks. In international networks (except for Japan) ITU-T has defined the specifications. In most respects the standards are the same, but the differences are significant enough to require that we specify which variant we are implementing.
+Providing support for both variants is important, but we'll start with ANSI.
+
+Spec Availability
+-----------------
+One definite problem we'll face is the availability of the standards for SS7. These ironically are NOT freely available. I will be petitioning the standards bodies to donate copies of the necessary specs to the project, but a better solution would be to convince them to release the specs freely to anyone.
+
+License
+-------
+I have not settled on a license yet. I initially chose the Artistic license, but I need to take the time to review the options. If you plan on contributing tell me what you think.
+
+
+Plan
+----
+The plan is to produce decoders/encoders for all the message types for the
+various protocols first. These can be used to build test tools.
+
+Once the decoders/encoders are built and verified the state machine engines can be implemented. At this point I'm not worried too much about overall architecture. Each layer can be implemented fairly independently which is one reason this is a good project for people to contribute to. Also, since this is not being developed to meet a specific customer deadline we can play around with the architecture and afford to throw a few ideas out as we proceed.
+
+A few important considerations are worth keeping in mind. Since an ss7 stack will not be a stand alone application - it will be integrated with a host system - the code will have to allow an easy fit into a variety of different environments for such support work as buffer management systems, logging systems, timers, databases, and hardware architectures.
+
+A typical ss7 system may manage a large number of physical ss7 links hosted on seperate processors. Because of this a key challenge for a scalable design is getting the distributed management to work properly.
+
+Thankyou,
+tino
+
+</pre>
